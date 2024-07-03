@@ -1,15 +1,14 @@
 "use client";
 import React, { useEffect } from "react";
 import Image from "next/image";
-import test from "../../img/playlistHeaderImage.png";
-import button from "../../img/button.png";
-import heart from "../../img/heart.png";
-import dots from "../../img/dots.png";
-import SongCard from "../../../../components/SongCard";
+import button from "../app/img/button.png";
+import heart from "../app/img/heart.png";
+import dots from "../app/img/dots.png";
 import { useSession } from "next-auth/react";
 import { useParams } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
-import { detailPLaylist } from "../../../../redux/PlayListDetailsSlice";
+import SongCard from "../../components/SongCard";
+import { detailPLaylist } from "../../redux/PlayListDetailsSlice";
 const page = () => {
   const { data: session } = useSession();
   const navigation = useParams();
@@ -23,14 +22,14 @@ const page = () => {
 
 const image = playlist?.images?.map(item => item?.url)[0]
   useEffect(() => {
-    dispatch(detailPLaylist(navigation.id, session.accessToken));
+    dispatch(detailPLaylist(navigation.id, session?.accessToken));
   }, [navigation.id]);
 
   return (
     <div className="w-full h-screen text-[#FFFFFF] bg-headerPlaylist-gradient box-border p-5 ">
       {loading ? (
         <div className="flex items-center  justify-center h-screen w-full  pr-40 pb-10">
-          <span class="loader"></span>
+          <span className="loader"></span>
         </div>
       ) : (
         <>
