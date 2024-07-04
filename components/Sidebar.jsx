@@ -66,7 +66,7 @@ function Sidebar() {
   }
           
           <div className="flex items-center p-2 space-x-2 h-10 w-36 text-gray-500 cursor-pointer">
-               <button onClick={()=> signOut({callbackUrl: '/login'})}>Logout</button>
+               {/* <button onClick={()=> signOut({callbackUrl: '/login'})}>Logout</button> */}
           </div>
         </div>
       </div>
